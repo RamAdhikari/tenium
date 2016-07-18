@@ -37,7 +37,7 @@
 #
 class tanium (
 
-  $servername        = $tanium::params::severname,         # Tanium server (required)
+  $servername        = $tanium::params::servername,
   $serverport        = $tanium::params::serverport,
   $resolver          = $tanium::params::resolver,
   $version           = $tanium::params::version,
