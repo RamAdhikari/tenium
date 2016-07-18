@@ -1,0 +1,16 @@
+Resolver=<%= @resolver %>
+<%- if @TODOversion -%>
+Version=<%= @version %>
+<% end -%>
+<%- if @servername -%>
+ServerName=<%= @servername %>
+<% end -%>
+<%- if @servernamelist -%>
+<% @servernamelist.each do |this_list| -%>
+ServerNameList      <%= this_list %>
+<% end -%>
+<% end -%>
+ServerPort=<%= @serverport %>
+LogPath=<%= @logpath %>
+LogSize=<%= @logsize %>
+LogVerbosityLevel=<%= @logverbositylevel %>

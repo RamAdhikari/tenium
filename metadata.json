@@ -1,0 +1,14 @@
+{
+  "name": "bschonec-tanium",
+  "version": "0.1.0",
+  "author": "Brian Schonecker",
+  "summary": "Puppet module to install Tanium Endpoint Security",
+  "license": "Apache 2.0",
+  "source": "https://github.com/bschonec/tanium.git",
+  "project_page": "https://github.com/bschonec/tanium",
+  "issues_url": "https://github.com/bschonec/tanium/issues",
+  "dependencies": [
+    {"version_requirement":">= 1.0.0","name":"puppetlabs-stdlib"}
+  ]
+}
+
