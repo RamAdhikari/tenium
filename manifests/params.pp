@@ -49,10 +49,12 @@ class tanium::params {
 
   $service_ensure    = 'running'
   $service_enable    = true
-  $service_name      = 'TaniumClient'
-
   $package_name      = 'TaniumClient'
   $package_ensure    = present
 
+  case $::lsbmajdistrelease {
+    '7':     {$service_name = 'taniumclient'}
+    default: {$service_name = 'TaniumClient'}
+  }
 
 }
