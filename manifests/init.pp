@@ -80,12 +80,12 @@ class tanium (
   }
 
   file{$tanium::params::ini_file:
-    ensure => file,
-    owner  => $ini_owner,
-    group  => $ini_group,
-    mode   => $ini_mode,
+    ensure  => file,
+    owner   => $ini_owner,
+    group   => $ini_group,
+    mode    => $ini_mode,
     content => template('tanium/TaniumClient.ini.erb'),
-    notify => Service[$service_name];
+    notify  => Service[$service_name];
 
   $logpath:
     ensure => directory,
