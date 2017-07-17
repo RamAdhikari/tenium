@@ -73,21 +73,12 @@ class tanium (
 
   validate_absolute_path($logpath)
 
-
   service{$service_name:
     ensure => $service_ensure,
     enable => $service_enable,
   }
 
-  file{$tanium::params::ini_file:
-    ensure  => file,
-    owner   => $ini_owner,
-    group   => $ini_group,
-    mode    => $ini_mode,
-    content => template('tanium/TaniumClient.ini.erb'),
-    notify  => Service[$service_name];
-
-  $logpath:
+  file {$logpath:
     ensure => directory,
     owner  => $ini_owner,
     group  => $ini_group,
@@ -99,6 +90,20 @@ class tanium (
     group  => $ini_group,
     mode   => $ini_mode,
     source => 'puppet:///modules/tanium/tanium.pub',
+  }
+
+  augeas {'Resolver':
+    lens    => "Simplevars.lns",
+    incl    => $tanium::params::ini_file,
+    changes => [
+      "set Resolver          ${resolver}",
+      "set ServerName        ${servername}",
+      "set ServerPort        ${serverport}",
+      "set LogPath           ${logpath}",
+      "set LogSize           ${logsize}",
+      "set LogVerbosityLevel ${logverbositylevel}",
+      # TODO "set Version           ${version}",
+    ],
   }
 
   package {$package_name:
